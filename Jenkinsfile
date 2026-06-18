@@ -7,9 +7,7 @@ stages {
 stage('Terraform Init') {
 
 steps {
-
 sh 'terraform init'
-
 }
 
 }
@@ -17,12 +15,34 @@ sh 'terraform init'
 stage('Terraform Apply') {
 
 steps {
-
 sh 'terraform apply -auto-approve'
-
 }
 
 }
+
+stage('Terraform Destroy') {
+
+when {
+expression {
+return params.DESTROY
+}
+}
+
+steps {
+sh 'terraform destroy -auto-approve'
+}
+
+}
+
+}
+
+parameters {
+
+booleanParam(
+name: 'DESTROY',
+defaultValue: false,
+description: 'Destroy Terraform resources'
+)
 
 }
 
