@@ -40,7 +40,7 @@ parameters {
 
 booleanParam(
 name: 'DESTROY',
-defaultValue: true,
+defaultValue: galse,
 description: 'Destroy Terraform resources'
 )
 
