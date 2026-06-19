@@ -72,8 +72,9 @@ stage('Docker Build') {
 steps {
 
 sh '''
-cd fintech-app
-docker build -t fintech-app .
+cd fintech-app/frontend
+
+docker build -t fintech-frontend .
 '''
 
 }
