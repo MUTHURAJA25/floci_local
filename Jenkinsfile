@@ -34,19 +34,16 @@ sh 'terraform apply -auto-approve'
 
 }
 
-stage('Build') {
+stage('Frontend Build') {
 
 steps {
 
 sh '''
-cd fintech-app
+cd fintech-app/frontend
 
-if [ -d backend ]; then
-echo "Backend Build"
-fi
-
-if [ -d frontend ]; then
-echo "Frontend Build"
+if [ -f package.json ]; then
+npm install
+npm run build
 fi
 '''
 
@@ -54,12 +51,28 @@ fi
 
 }
 
-stage('Push') {
+stage('Backend Build') {
 
 steps {
 
 sh '''
-echo "Push stage completed"
+cd fintech-app/backend
+
+if [ -f package.json ]; then
+npm install
+fi
+'''
+
+}
+
+}
+
+stage('Docker Build') {
+
+steps {
+
+sh '''
+echo Docker build stage
 '''
 
 }
@@ -71,7 +84,7 @@ stage('Deploy') {
 steps {
 
 sh '''
-echo "Deploy stage completed"
+echo Deploy completed
 '''
 
 }
