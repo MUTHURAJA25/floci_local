@@ -6,7 +6,7 @@ parameters {
 
 booleanParam(
 name: 'DESTROY',
-defaultValue: true,
+defaultValue: flase,
 description: 'Destroy Terraform resources'
 )
 
