@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Wrapper from "@/pages/layouts/Wrapper";
-import GenerateInputs from "@/components/generateInputs";
+import GenerateInputs from "@/components/generateInputs"; 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FormHandleChange, FormValidation } from "@/components/formValidator.jsx";
