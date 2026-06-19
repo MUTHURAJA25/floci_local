@@ -72,7 +72,8 @@ stage('Docker Build') {
 steps {
 
 sh '''
-echo Docker build stage
+cd fintech-app
+docker build -t fintech-app .
 '''
 
 }
@@ -105,4 +106,4 @@ sh 'terraform destroy -auto-approve'
 
 }
 
-}
+}   
