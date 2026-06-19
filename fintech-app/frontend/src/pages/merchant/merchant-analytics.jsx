@@ -12,7 +12,7 @@ import {
   Bar,
 } from "recharts";
 import Wrapper from "@/pages/layouts/Wrapper";
-import GenerateInputs from "@/components/GenerateInputs";
+import generateInputs from "@/components/generateInputs";
 
 // ----------------------------------------------
 // Fake Data Generator
@@ -171,7 +171,7 @@ export default function MerchantAnalytics({ initialStart, initialEnd }) {
             <div className="row g-3 align-items-end">
               {["startDate", "endDate"].map((field) => (
                 <div className="col-auto" key={field}>
-                  <GenerateInputs
+                  <generateInputs
                     mapField={{
                       key: field,
                       name: field,

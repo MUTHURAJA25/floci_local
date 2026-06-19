@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Wrapper from '../layouts/Wrapper'
 import { FormValidation, FormHandleChange } from "@/components/formValidator.jsx";
-import GenerateInputs from "@/components/GenerateInputs.jsx";
+import generateInputs from "@/components/generateInputs.jsx";
 
-function GenerateInputsExamples() {
+function generateInputsExamples() {
 
 
     const isFormDirty = useRef(false);
@@ -329,7 +329,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.onlyNumber} />
+                                    <generateInputs mapField={compileFields.onlyNumber} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -343,11 +343,11 @@ function GenerateInputsExamples() {
                                         </p>
                                     </div>
 
-                                    <GenerateInputs mapField={compileFields.email} />
+                                    <generateInputs mapField={compileFields.email} />
 
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
-                                    <GenerateInputs mapField={compileFields.name} />
+                                    <generateInputs mapField={compileFields.name} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -360,7 +360,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.password} />
+                                    <generateInputs mapField={compileFields.password} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -373,7 +373,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.confirmPassword} />
+                                    <generateInputs mapField={compileFields.confirmPassword} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -386,7 +386,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.fileUpload} />
+                                    <generateInputs mapField={compileFields.fileUpload} />
                                 </div>
                                 <div className="form-password-toggle form-control-validation mb-5">
                                     <div className="alert alert-primary mb-3">
@@ -400,7 +400,7 @@ function GenerateInputsExamples() {
                                         </p>
                                     </div>
                                     <div className=" d-flex gap-3 pt-3">
-                                        <GenerateInputs mapField={compileFields.gender} />
+                                        <generateInputs mapField={compileFields.gender} />
                                     </div>
                                 </div>
                             </div>
@@ -417,7 +417,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.custom} />
+                                    <generateInputs mapField={compileFields.custom} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -430,7 +430,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.upi} />
+                                    <generateInputs mapField={compileFields.upi} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -443,7 +443,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.ifsc} />
+                                    <generateInputs mapField={compileFields.ifsc} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -456,7 +456,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.onlyAlphaNumeric} />
+                                    <generateInputs mapField={compileFields.onlyAlphaNumeric} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -469,10 +469,10 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.onlyAlpha} />
+                                    <generateInputs mapField={compileFields.onlyAlpha} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
-                                    <GenerateInputs mapField={compileFields.dob} />
+                                    <generateInputs mapField={compileFields.dob} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -485,7 +485,7 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.summary} />
+                                    <generateInputs mapField={compileFields.summary} />
                                 </div>
                                 <div className="form-floating form-floating-outline mb-5 form-control-validation">
                                     <div className="alert  alert-primary mb-3">
@@ -498,14 +498,14 @@ function GenerateInputsExamples() {
                                             </pre>
                                         </p>
                                     </div>
-                                    <GenerateInputs mapField={compileFields.country} />
+                                    <generateInputs mapField={compileFields.country} />
                                 </div>
                             </div>
                         </div>
 
                         <div className="mb-5">
                             <div className="form-password-toggle form-control-validation">
-                                <GenerateInputs mapField={compileFields.agree} />
+                                <generateInputs mapField={compileFields.agree} />
                             </div>
                         </div>
                         <div className="mb-5">
@@ -521,4 +521,4 @@ function GenerateInputsExamples() {
     )
 }
 
-export default GenerateInputsExamples
+export default generateInputsExamples

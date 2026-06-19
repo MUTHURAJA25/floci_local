@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Wrapper from "@/pages/layouts/Wrapper";
-import GenerateInputs from "@/components/GenerateInputs";
+import generateInputs from "@/components/generateInputs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FormHandleChange, FormValidation } from "@/components/formValidator.jsx";
@@ -244,7 +244,7 @@ export default function RefundRequests() {
               <form className="mt-3" onSubmit={handleSubmit}>
                 {Object.values(inputConfigs).map((field) => (
                   <div className="mb-4" key={field.name}>
-                    <GenerateInputs mapField={field} />
+                    <generateInputs mapField={field} />
                   </div>
                 ))}
 

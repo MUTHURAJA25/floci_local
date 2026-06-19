@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Wrapper from "@/pages/layouts/Wrapper";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import GenerateInputs from "@/components/GenerateInputs";
+import generateInputs from "@/components/generateInputs";
 import {
   getMerchantPayoutConfig,
   saveMerchantPayoutConfig,
@@ -262,7 +262,7 @@ const PayoutConfiguration = () => {
           <div className="row">
             {/* PAYOUT METHOD */}
             <div className="col-md-4 mb-4">
-              <GenerateInputs
+              <generateInputs
                 mapField={{
                   type: "dropdown",
                   name: "payoutMethod",
@@ -279,13 +279,13 @@ const PayoutConfiguration = () => {
             {/* BANK / UPI FIELDS */}
             {payoutFieldGroups[formData.formFields.payoutMethod]?.map((field) => (
               <div className="col-md-4 mb-4" key={field}>
-                <GenerateInputs mapField={compiledFields[field]} />
+                <generateInputs mapField={compiledFields[field]} />
               </div>
             ))}
 
             {/* PAYOUT FREQUENCY */}
             <div className="col-md-4 mb-4">
-              <GenerateInputs
+              <generateInputs
                 mapField={{
                   type: "dropdown",
                   name: "payoutFrequency",
