@@ -18,8 +18,8 @@ provider "aws" {
   skip_metadata_api_check     = true
 
   endpoints {
-    ecs = "http://floci:4566"
-    sts = "http://floci:4566"
+    ecs = "http://172.17.0.2:4566"
+    sts = "http://172.17.0.2:4566"
   }
 }
 
