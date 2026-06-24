@@ -2,6 +2,11 @@ pipeline {
 
     agent any
 
+    environment {
+        DOCKER_USER = credentials('DOCKER_USER')
+        DOCKER_PASS = credentials('DOCKER_PASS')
+    }
+
     parameters {
         booleanParam(
             name: 'DESTROY',
@@ -19,6 +24,7 @@ pipeline {
         }
 
         stage('Terraform Apply') {
+
             when {
                 expression { !params.DESTROY }
             }
@@ -29,7 +35,9 @@ pipeline {
         }
 
         stage('Frontend Build') {
+
             steps {
+
                 sh '''
                 cd fintech-app/frontend
 
@@ -38,11 +46,15 @@ pipeline {
                   npm run build
                 fi
                 '''
+
             }
+
         }
 
         stage('Backend Build') {
+
             steps {
+
                 sh '''
                 cd fintech-app/backend
 
@@ -50,30 +62,35 @@ pipeline {
                   npm install
                 fi
                 '''
+
             }
+
         }
 
         stage('Docker Build') {
 
-    steps {
+            steps {
 
-        sh '''
-        cd fintech-app/frontend
+                sh '''
+                cd fintech-app/frontend
 
-        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 
-        docker build -t muthuraja25/fintech-frontend:latest .
+                docker build -t muthuraja25/fintech-frontend:latest .
 
-        docker push muthuraja25/fintech-frontend:latest
-        '''
+                docker push muthuraja25/fintech-frontend:latest
+                '''
 
-    }
+            }
 
-}
+        }
+
         stage('Deploy ECS Fargate') {
+
             steps {
                 sh 'terraform apply -auto-approve'
             }
+
         }
 
         stage('Terraform Destroy') {
@@ -85,7 +102,9 @@ pipeline {
             steps {
                 sh 'terraform destroy -auto-approve'
             }
+
         }
 
     }
+
 }
