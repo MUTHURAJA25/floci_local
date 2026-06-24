@@ -17,11 +17,14 @@ provider "aws" {
   skip_requesting_account_id  = true
   skip_metadata_api_check     = true
 
+
   endpoints {
-    ecs = "http://localhost:4566"
-    sts = "http://localhost:4566"
+    ecs = "http://host.docker.internal:4566"
+    sts = "http://host.docker.internal:4566"
   }
 }
+
+
 
 resource "aws_ecs_cluster" "main" {
   name = var.cluster_name
