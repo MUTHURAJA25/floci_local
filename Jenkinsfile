@@ -74,19 +74,24 @@ steps {
 sh '''
 cd fintech-app/frontend
 
-docker build -t fintech-frontend .
+docker build -t muthuraja25/fintech-frontend:latest .
+docker push muthuraja25/fintech-frontend:latest
 '''
 
 }
 
 }
 
-stage('Deploy') {
+stage('Deploy ECS Fargate') {
+
+when {
+expression { !params.DESTROY }
+}
 
 steps {
 
 sh '''
-echo Deploy completed
+terraform apply -auto-approve
 '''
 
 }

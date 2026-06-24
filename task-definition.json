@@ -1,0 +1,19 @@
+{
+  "family": "fintech-frontend",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "frontend",
+      "image": "muthuraja25/fintech-frontend:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5173
+        }
+      ]
+    }
+  ]
+}
