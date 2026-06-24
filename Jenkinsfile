@@ -68,16 +68,15 @@ fi
 }
 
 stage('Docker Build') {
-
 steps {
-
 sh '''
 cd fintech-app/frontend
 
 docker build -t muthuraja25/fintech-frontend:latest .
+
 docker push muthuraja25/fintech-frontend:latest
 '''
-
+}
 }
 
 }
