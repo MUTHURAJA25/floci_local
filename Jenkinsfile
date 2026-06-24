@@ -54,17 +54,22 @@ pipeline {
         }
 
         stage('Docker Build') {
-            steps {
-                sh '''
-                cd fintech-app/frontend
 
-                docker build -t muthuraja25/fintech-frontend:latest .
+    steps {
 
-                docker push muthuraja25/fintech-frontend:latest
-                '''
-            }
-        }
+        sh '''
+        cd fintech-app/frontend
 
+        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+
+        docker build -t muthuraja25/fintech-frontend:latest .
+
+        docker push muthuraja25/fintech-frontend:latest
+        '''
+
+    }
+
+}
         stage('Deploy ECS Fargate') {
             steps {
                 sh 'terraform apply -auto-approve'
