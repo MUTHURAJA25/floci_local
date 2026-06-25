@@ -5,6 +5,7 @@ pipeline {
     environment {
         DOCKER_USER = credentials('DOCKER_USER')
         DOCKER_PASS = credentials('DOCKER_PASS')
+        SONAR_TOKEN = credentials('SONAR_TOKEN')
     }
 
     parameters {
@@ -22,6 +23,17 @@ pipeline {
                 sh 'terraform init'
             }
         }
+        stage('SonarQube Scan') {
+    steps {
+        sh '''
+        sonar-scanner \
+        -Dsonar.projectKey=fintech-app \
+        -Dsonar.sources=. \
+        -Dsonar.host.url=http://host.docker.internal:9000 \
+        -Dsonar.token=$SONAR_TOKEN
+        '''
+    }
+}
 
         stage('Terraform Apply') {
 
