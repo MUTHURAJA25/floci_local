@@ -23,6 +23,20 @@ pipeline {
                 sh 'terraform init'
             }
         }
+        stage('Unit Test') {
+
+    steps {
+
+        sh '''
+        cd fintech-app/frontend
+
+        npm install
+
+        npm run test
+        '''
+
+    }
+
         stage('SonarQube Scan') {
 
     steps {
@@ -101,6 +115,20 @@ pipeline {
             }
 
         }
+
+        stage('Docker Scan') {
+
+    steps {
+
+        sh '''
+        trivy image \
+        --severity HIGH,CRITICAL \
+        muthuraja25/fintech-frontend:latest
+        '''
+
+    }
+
+
 
         stage('Deploy ECS Fargate') {
 
