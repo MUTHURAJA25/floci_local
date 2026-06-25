@@ -31,7 +31,7 @@ pipeline {
         /opt/sonar-scanner/bin/sonar-scanner \
         -Dsonar.projectKey=fintech-app \
         -Dsonar.sources=. \
-        -Dsonar.host.url=http://host.docker.internal:9000 \
+        -Dsonar.host.url=http://172.17.0.4:9000 \
         -Dsonar.token=$SONAR_TOKEN
         '''
 
