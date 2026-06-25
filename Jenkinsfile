@@ -37,7 +37,7 @@ pipeline {
 
     }
 
-}
+
 }
 
         stage('Terraform Apply') {
