@@ -23,36 +23,30 @@ pipeline {
                 sh 'terraform init'
             }
         }
+
         stage('Unit Test') {
+            steps {
+                sh '''
+                cd fintech-app/frontend
 
-    steps {
+                npm install
 
-        sh '''
-        cd fintech-app/frontend
-
-        npm install
-
-        npm run test
-        '''
-
-    }
+                npm run test
+                '''
+            }
+        }
 
         stage('SonarQube Scan') {
-
-    steps {
-
-        sh '''
-        /opt/sonar-scanner/bin/sonar-scanner \
-        -Dsonar.projectKey=fintech-app \
-        -Dsonar.sources=. \
-        -Dsonar.host.url=http://172.17.0.4:9000 \
-        -Dsonar.token=$SONAR_TOKEN
-        '''
-
-    }
-
-
-}
+            steps {
+                sh '''
+                /opt/sonar-scanner/bin/sonar-scanner \
+                -Dsonar.projectKey=fintech-app \
+                -Dsonar.sources=. \
+                -Dsonar.host.url=http://172.17.0.4:9000 \
+                -Dsonar.token=$SONAR_TOKEN
+                '''
+            }
+        }
 
         stage('Terraform Apply') {
 
@@ -66,9 +60,7 @@ pipeline {
         }
 
         stage('Frontend Build') {
-
             steps {
-
                 sh '''
                 cd fintech-app/frontend
 
@@ -77,15 +69,11 @@ pipeline {
                   npm run build
                 fi
                 '''
-
             }
-
         }
 
         stage('Backend Build') {
-
             steps {
-
                 sh '''
                 cd fintech-app/backend
 
@@ -93,15 +81,11 @@ pipeline {
                   npm install
                 fi
                 '''
-
             }
-
         }
 
         stage('Docker Build') {
-
             steps {
-
                 sh '''
                 cd fintech-app/frontend
 
@@ -111,31 +95,23 @@ pipeline {
 
                 docker push muthuraja25/fintech-frontend:latest
                 '''
-
             }
-
         }
 
         stage('Docker Scan') {
-
-    steps {
-
-        sh '''
-        trivy image \
-        --severity HIGH,CRITICAL \
-        muthuraja25/fintech-frontend:latest
-        '''
-
-    }
-
-
+            steps {
+                sh '''
+                trivy image \
+                --severity HIGH,CRITICAL \
+                muthuraja25/fintech-frontend:latest
+                '''
+            }
+        }
 
         stage('Deploy ECS Fargate') {
-
             steps {
                 sh 'terraform apply -auto-approve'
             }
-
         }
 
         stage('Terraform Destroy') {
@@ -147,8 +123,8 @@ pipeline {
             steps {
                 sh 'terraform destroy -auto-approve'
             }
-
         }
 
-    
+    }
 
+}
