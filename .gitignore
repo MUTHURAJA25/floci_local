@@ -4,3 +4,7 @@ fintech-app/.env.local
 .terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.backup
+
+
+
+https://github.com/MUTHURAJA25/floci_mxk_k8s.git
