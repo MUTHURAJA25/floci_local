@@ -37,16 +37,23 @@ pipeline {
         }
 
         stage('SonarQube Scan') {
-            steps {
-                sh '''
-                /opt/sonar-scanner/bin/sonar-scanner \
-                -Dsonar.projectKey=fintech-app \
-                -Dsonar.sources=. \
-                -Dsonar.host.url=http://172.17.0.4:9000 \
-                -Dsonar.token=$SONAR_TOKEN
-                '''
+    steps {
+        script {
+            def scannerHome = tool 'SonarScanner'
+
+            withSonarQubeEnv('SonarQube') {
+                dir('fintech-app/frontend') {
+                    sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=fintech-app \
+                        -Dsonar.projectName=fintech-app \
+                        -Dsonar.sources=.
+                    """
+                }
             }
         }
+    }
+}
 
         stage('Terraform Apply') {
 
